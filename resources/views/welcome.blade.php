@@ -90,6 +90,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>-->
                     <a href="{{ url('/notes') }}">Notes</a>
+                    <a href="{{ url('/notes/create') }}">Create Note</a>
                 </div>
             </div>
         </div>

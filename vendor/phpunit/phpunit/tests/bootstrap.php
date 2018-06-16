@@ -48,7 +48,3 @@ require_once TEST_FILES_PATH . 'RequirementsClassBeforeClassHookTest.php';
 require_once TEST_FILES_PATH . 'NoArgTestCaseTest.php';
 
 require_once TEST_FILES_PATH . 'Singleton.php';
-
-require_once TEST_FILES_PATH . 'DoNoAssertionTestCase.php';
-
-require_once TEST_FILES_PATH . 'FunctionCallback.php';

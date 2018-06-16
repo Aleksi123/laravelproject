@@ -11,7 +11,6 @@
         </testsuite>
 
         <testsuite name="large">
-            <directory suffix=".phpt">tests/Framework/MockObject/Generator</directory>
             <directory suffix=".phpt">tests/TextUI</directory>
             <directory suffix=".phpt">tests/Regression</directory>
         </testsuite>

@@ -33,7 +33,7 @@ class IsType extends Constraint
     /**
      * @var array
      */
-    private const KNOWN_TYPES = [
+    private $types = [
         'array'    => true,
         'boolean'  => true,
         'bool'     => true,
@@ -64,7 +64,7 @@ class IsType extends Constraint
     {
         parent::__construct();
 
-        if (!isset(self::KNOWN_TYPES[$type])) {
+        if (!isset($this->types[$type])) {
             throw new \PHPUnit\Framework\Exception(
                 \sprintf(
                     'Type specified for PHPUnit\Framework\Constraint\IsType <%s> ' .

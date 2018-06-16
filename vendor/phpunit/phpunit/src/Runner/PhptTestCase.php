@@ -27,9 +27,19 @@ use Throwable;
 class PhptTestCase implements Test, SelfDescribing
 {
     /**
-     * @var string[]
+     * @var string
      */
-    private const SETTINGS = [
+    private $filename;
+
+    /**
+     * @var AbstractPhpProcess
+     */
+    private $phpUtil;
+
+    /**
+     * @var array
+     */
+    private $settings = [
         'allow_url_fopen=1',
         'auto_append_file=',
         'auto_prepend_file=',
@@ -51,15 +61,6 @@ class PhptTestCase implements Test, SelfDescribing
         'safe_mode=0',
         'xdebug.default_enable=0'
     ];
-    /**
-     * @var string
-     */
-    private $filename;
-
-    /**
-     * @var AbstractPhpProcess
-     */
-    private $phpUtil;
 
     /**
      * Constructs a test case with the given filename.
@@ -111,7 +112,7 @@ class PhptTestCase implements Test, SelfDescribing
         }
 
         $xfail    = false;
-        $settings = $this->parseIniSection(self::SETTINGS);
+        $settings = $this->parseIniSection($this->settings);
 
         $result->startTest($this);
 
@@ -324,7 +325,7 @@ class PhptTestCase implements Test, SelfDescribing
         if (isset($sections['CLEAN'])) {
             $cleanCode = $this->render($sections['CLEAN']);
 
-            $this->phpUtil->runJob($cleanCode, self::SETTINGS);
+            $this->phpUtil->runJob($cleanCode, $this->settings);
         }
     }
 

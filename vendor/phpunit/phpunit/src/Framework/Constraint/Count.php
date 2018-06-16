@@ -20,7 +20,7 @@ class Count extends Constraint
     /**
      * @var int
      */
-    private $expectedCount;
+    private $expectedCount = 0;
 
     public function __construct(int $expected)
     {

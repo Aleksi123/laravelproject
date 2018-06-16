@@ -37,17 +37,4 @@ class MultiDependencyTest extends TestCase
         $this->assertEquals('foo', $a);
         $this->assertEquals('bar', $b);
     }
-
-    /**
-     * @depends MultiDependencyTest::testThree
-     */
-    public function testFour()
-    {
-        $this->assertTrue(true);
-    }
-
-    public function testFive()
-    {
-        $this->assertTrue(true);
-    }
 }

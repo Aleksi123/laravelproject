@@ -35,14 +35,6 @@ class PhpExecutableFinder
      */
     public function find($includeArgs = true)
     {
-        if ($php = getenv('PHP_BINARY')) {
-            if (!is_executable($php)) {
-                return false;
-            }
-
-            return $php;
-        }
-
         $args = $this->findArguments();
         $args = $includeArgs && $args ? ' '.implode(' ', $args) : '';
 
@@ -52,7 +44,7 @@ class PhpExecutableFinder
         }
 
         if ($php = getenv('PHP_PATH')) {
-            if (!@is_executable($php)) {
+            if (!is_executable($php)) {
                 return false;
             }
 
@@ -60,12 +52,12 @@ class PhpExecutableFinder
         }
 
         if ($php = getenv('PHP_PEAR_PHP_BIN')) {
-            if (@is_executable($php)) {
+            if (is_executable($php)) {
                 return $php;
             }
         }
 
-        if (@is_executable($php = PHP_BINDIR.('\\' === DIRECTORY_SEPARATOR ? '\\php.exe' : '/php'))) {
+        if (is_executable($php = PHP_BINDIR.('\\' === DIRECTORY_SEPARATOR ? '\\php.exe' : '/php'))) {
             return $php;
         }
 

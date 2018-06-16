@@ -612,7 +612,6 @@ class TestResult implements Countable
             \function_exists('xdebug_start_function_monitor');
 
         if ($monitorFunctions) {
-            /* @noinspection ForgottenDebugOutputInspection */
             \xdebug_start_function_monitor(ResourceOperations::getFunctions());
         }
 
@@ -699,11 +698,7 @@ class TestResult implements Countable
 
         if ($monitorFunctions) {
             $blacklist = new Blacklist;
-
-            /** @noinspection ForgottenDebugOutputInspection */
             $functions = \xdebug_get_monitored_functions();
-
-            /* @noinspection ForgottenDebugOutputInspection */
             \xdebug_stop_function_monitor();
 
             foreach ($functions as $function) {
@@ -817,17 +812,6 @@ class TestResult implements Countable
                 new RiskyTestError(
                     'This test did not perform any assertions'
                 ),
-                $time
-            );
-        } elseif ($this->beStrictAboutTestsThatDoNotTestAnything &&
-            $test->doesNotPerformAssertions() &&
-            $test->getNumAssertions() > 0) {
-            $this->addFailure(
-                $test,
-                new RiskyTestError(\sprintf(
-                    'This test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
-                    $test->getNumAssertions()
-                )),
                 $time
             );
         } elseif ($this->beStrictAboutOutputDuringTests && $test->hasOutput()) {
